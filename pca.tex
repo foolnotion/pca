@@ -9,6 +9,8 @@
 \usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{zi4}
 %\usepackage{sourcesanspro}
 
 % redeclare emph
@@ -16,13 +18,19 @@
 \DeclareTextFontCommand{\emph}{\color{Blue}\em}
 % beamer customizatoin
 \usefonttheme[onlymath]{serif} 
+%\usefonttheme[onlymath]{serif} 
 \setbeamercolor{math text}{fg=Blue}
 \setbeamercolor{math text displayed}{fg=Blue}
 \setbeamertemplate{navigation symbols}{}
  
 %Information to be included in the title page:
 \title{Principal Component Analysis}
-\date{2017}
+\author{Bogdan Burlacu}
+%\titlegraphic{
+%    \includegraphics[width=0.5\textwidth]{fig/fhooe.png}
+%}
+
+%\date{2017}
  
 \begin{document}
  
@@ -151,7 +159,7 @@ Suppose we have a set of data with a certain distribution.
 \frametitle{Principal Component Analysis}
     \begin{itemize}
     \item Reduce the dimensionality of the original feature set by projecting onto a smaller subspace, where the \emph{eigenvectors} will form the axes.    
-    \item We use the corresponding \emph{eigenvalues} to choose which dimensions to include. The new dimensions are \emph{principal components}.
+    \item We use the corresponding \emph{eigenvalues} to choose which dimensions (\emph{principal components}) to include. 
 \end{itemize}
 \end{frame}
 
@@ -174,7 +182,7 @@ Suppose we have a set of data with a certain distribution.
         \begin{subfigure}{0.3\textwidth}
             \includegraphics[width=\textwidth]{fig/iris_virginica.jpg}\caption{Iris-virginica}
         \end{subfigure} 
-        {\color{gray} (source: https://en.wikipedia.org/wiki/Iris\_flower\_data\_set)}
+        {\color{gray} ({\small \url{https://en.wikipedia.org/wiki/Iris\_flower\_data\_set}})}
     \end{figure}
 \end{frame}
 
@@ -316,8 +324,8 @@ Input data $\mathbf{X}$
     \frametitle{Principal Component Analysis}
     \framesubtitle{Example: Iris Dataset}
     Contribution of original features to each principal component 
-    \centering
     \begin{figure}
+        \centering
         \begin{tabular}{|l|c|c|}
             \hline
             & Principal component 1 & Principal component 2\\
@@ -330,5 +338,46 @@ Input data $\mathbf{X}$
             \hline
         \end{tabular}
     \end{figure}
+    {\color{Blue} \textbf{Question}}: How to reconstruct the original features?
 \end{frame}
+
+\begin{frame}[t]
+    \frametitle{Principal Component Analysis}
+    Reconstruction of the original features
+    \begin{itemize}
+        \item Use $\mathbf{W}^T$ to map the data back to the original dimensions 
+        \[ 
+            \hat{\mathbf{X}} = \mathbf{Y} \mathbf{W}^T
+        \]
+        \item Example: image compression
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.495\textwidth}
+            \centering 
+            \includegraphics[width=0.8\textwidth]{fig/pca_reconstruction_1}
+            \caption{Original image}
+        \end{subfigure}
+        \begin{subfigure}{0.495\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{fig/pca_reconstruction_2}
+            \caption{Reconstruction from 50 PC}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+
+
+\begin{frame}[t]
+    \frametitle{Principal Component Analysis}
+    Other application areas
+    \begin{itemize}
+        \item Image processing
+        \item Speech recognition
+        \item Recommendation engines
+        \item Text processing
+    \end{itemize}
+
+\end{frame}
+
 \end{document}
